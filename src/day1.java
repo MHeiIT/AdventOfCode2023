@@ -32,7 +32,7 @@ public class day1 {
     }
 
     public static void b1() throws IOException {
-        List<String> file = Files.readAllLines(Path.of("./vendor/day1b_test"));
+        List<String> file = Files.readAllLines(Path.of("./vendor/day1b"));
         int sum = 0;
         for (String line: file) {
             line = replaceSpelledOutDigits(line);
@@ -56,8 +56,8 @@ public class day1 {
     }
 
     public static String replaceSpelledOutDigits(String line) {
-        String[][] numbers = {{"one", "1"}, {"two", "2"}, {"three", "3"}, {"four", "4"},
-                {"five", "5"}, {"six", "6"}, {"seven", "7"}, {"eight", "8"}, {"nine", "9"}};
+        String[][] numbers = {{"one", "on1e"}, {"two", "tw2o"}, {"three", "thre3e"}, {"four", "fou4r"},
+                {"five", "fiv5e"}, {"six", "si6x"}, {"seven", "seve7n"}, {"eight", "eigh8t"}, {"nine", "ni9ne"}};
 
         for (String[] number: numbers) {
             line = line.replace(number[0], number[1]);
