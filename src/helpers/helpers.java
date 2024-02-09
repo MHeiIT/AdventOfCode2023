@@ -1,5 +1,8 @@
 package helpers;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class helpers {
     public static void printintarray(int[] arr) {
         for (int i: arr) {
@@ -23,5 +26,14 @@ public class helpers {
         }
 
         return nums;
+    }
+    public static int countDifferentCharacters(String str) {
+        Set<Character> uniqueCharacters = new HashSet<>();
+
+        for (char c : str.toCharArray()) {
+            uniqueCharacters.add(c);
+        }
+
+        return uniqueCharacters.size();
     }
 }
