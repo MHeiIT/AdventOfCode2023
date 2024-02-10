@@ -17,6 +17,14 @@ public class Pair<K, V> {
         return value;
     }
 
+    public K getL() {
+        return key;
+    }
+
+    public V getR() {
+        return value;
+    }
+
     @Override
     public String toString() {
         return "(" + key + ", " + value + ")";

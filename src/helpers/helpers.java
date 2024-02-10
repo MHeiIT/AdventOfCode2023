@@ -1,6 +1,8 @@
 package helpers;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 
 public class helpers {
@@ -35,5 +37,15 @@ public class helpers {
         }
 
         return uniqueCharacters.size();
+    }
+    public static Queue<Character> charArrayToQueue(char[] charArray) {
+        Queue<Character> queue = new LinkedList<>();
+
+        // Add each character from the array to the queue
+        for (char c : charArray) {
+            queue.offer(c); // or queue.add(c);
+        }
+
+        return queue;
     }
 }
