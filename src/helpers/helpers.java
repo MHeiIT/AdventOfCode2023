@@ -1,9 +1,6 @@
 package helpers;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 public class helpers {
     public static void printintarray(int[] arr) {
@@ -29,6 +26,17 @@ public class helpers {
 
         return nums;
     }
+
+    public static List<Integer> stringArrToIntList(String numbers) {
+        String[] arr = numbers.split(" ");
+        List<Integer> nums = new ArrayList<>();
+
+        for (String s : arr) {
+            nums.add(Integer.parseInt(s));
+        }
+        return nums;
+    }
+
     public static int countDifferentCharacters(String str) {
         Set<Character> uniqueCharacters = new HashSet<>();
 
