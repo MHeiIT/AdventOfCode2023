@@ -83,20 +83,15 @@ public class day8 {
         int sum = 0;
         String[] current_posses = current_posses_list.toArray(new String[0]);
 
-        for (int i = 0; i < current_posses.length; i++) {
-            System.out.println(current_posses[i] + " " + current_posses_list.get(i));
-        }
         //System.out.println(current_posses.length);
-
-        int last = 0;
-        int iii = 100;
+        int tt = 5;
         for (int j = 0; true; j++) {
             char c = chararr[j % chararr.length];
 
 
             boolean end = true;
 
-            for (int i = 0; i < current_posses.length; i++) {
+            for (int i = 3; i < current_posses.length; i++) {
                 if (c == 'R') {
                     current_posses[i] = mp.get(current_posses[i]).getR();
                 } else {
@@ -104,22 +99,19 @@ public class day8 {
                 }
                 if (current_posses[i].toCharArray()[current_posses[i].toCharArray().length - 1] != 'Z') {
                     end = false;
-                } else {
-                    int temp = j+1;
-                    int aaa = (temp - last);
-                    System.out.println(temp + " " + aaa);
-                    last = temp;
-                    iii--;
-                    if (iii != 0) {
-                        end = false;
-                    }
                 }
                 break;
             }
 
             if (end) {
-                sum = j + 1;
-                break;
+                if (tt != 0) {
+                    System.out.println(j+1);
+                    tt--;
+                } else {
+                    sum = j + 1;
+                    break;
+                }
+
             }
         }
 
@@ -145,9 +137,20 @@ public class day8 {
 
         System.out.println("The least common multiple (LCM) is: " + lcm);
         System.out.println("The least common multiple (LCM) is: " + test);
-    } // to high 311653045202070000
-    // to low 279785601383
+        BigInteger product = multiplyBigIntegers(ints);
 
+        System.out.println("The product of all BigIntegers is: " + product);
+    }
+
+    // to high 311653045202070000
+    // to low 279785601383
+    public static BigInteger multiplyBigIntegers(BigInteger[] bigIntegers) {
+        BigInteger product = BigInteger.ONE;
+        for (BigInteger num : bigIntegers) {
+            product = product.multiply(num);
+        }
+        return product;
+    }
     public static BigInteger calculateLCM(BigInteger[] moduli) {
         BigInteger lcm = moduli[0];
         for (int i = 1; i < moduli.length; i++) {
