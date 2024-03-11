@@ -82,16 +82,19 @@ public class day8 {
 
         int sum = 0;
         String[] current_posses = current_posses_list.toArray(new String[0]);
-
+        int[] last = new int[current_posses.length];
+        for (int i = 0; i < last.length; i++) {
+            last[i] = 0;
+        }
         //System.out.println(current_posses.length);
         int tt = 5;
-        for (int j = 0; true; j++) {
+        for (int j = 0; true; ) {
             char c = chararr[j % chararr.length];
 
-
+            j++;
             boolean end = true;
 
-            for (int i = 3; i < current_posses.length; i++) {
+            for (int i = 5; i < current_posses.length; i++) {
                 if (c == 'R') {
                     current_posses[i] = mp.get(current_posses[i]).getR();
                 } else {
@@ -99,19 +102,17 @@ public class day8 {
                 }
                 if (current_posses[i].toCharArray()[current_posses[i].toCharArray().length - 1] != 'Z') {
                     end = false;
+                } else {
+                    System.out.println(j - last[i]);
+                    last[i] = j;
+                    end = false;
                 }
                 break;
             }
 
-            if (end) {
-                if (tt != 0) {
-                    System.out.println(j+1);
-                    tt--;
-                } else {
-                    sum = j + 1;
-                    break;
-                }
-
+            if (end || j == 800000) {
+                sum = j;
+                break;
             }
         }
 
@@ -129,7 +130,7 @@ public class day8 {
     public static void calc() {
         BigInteger[] ints = {BigInteger.valueOf(14999), BigInteger.valueOf(20093),
                 BigInteger.valueOf(17263), BigInteger.valueOf(16697),
-                BigInteger.valueOf(20659)};
+                BigInteger.valueOf(20659), BigInteger.valueOf(12169)};
 
         BigInteger lcm = calculateLCM(ints);
 
@@ -142,8 +143,11 @@ public class day8 {
         System.out.println("The product of all BigIntegers is: " + product);
     }
 
+    // hä????? 311653045202070000
     // to high 311653045202070000
+    // hä???? 279785601383
     // to low 279785601383
+    //      12030780859469 I am stupid
     public static BigInteger multiplyBigIntegers(BigInteger[] bigIntegers) {
         BigInteger product = BigInteger.ONE;
         for (BigInteger num : bigIntegers) {
